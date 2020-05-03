@@ -1,11 +1,20 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+
+import * as firebase from 'firebase'
 
 class LoadingScreen extends React.Component{
+    componentDidMount(){
+        firebase.auth().onAuthStateChanged(user => {
+            this.props.navigation.navigate(user ? "App" : "Auth");
+        });
+    }
+
     render(){
         return(
             <View style={styles.container}>
-                <Text>This is the LoadingScreen</Text>
+                <Text>Loading</Text>
+                <ActivityIndicator size={24}></ActivityIndicator>
             </View>
         );
     }
