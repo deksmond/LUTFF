@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+
 import * as firebase from 'firebase'
 
 class RegisterScreen extends React.Component{
@@ -10,11 +11,22 @@ class RegisterScreen extends React.Component{
         errorMessage: null
     }
 
+
+handleSignUp = () => {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .then(userCredentials => {
+        return userCredentials.user.updateProfile({
+            displayName: this.state.email
+        });
+    })
+    .catch(error => this.setState({ errorMessage: error.message }))
+};
+
     
     render(){
         return(
             <View style={styles.container}>
-                <Text style={styles.greeting}>{'Hello again, \n World'}</Text>
+                <Text style={styles.greeting}>{'Hello! \n Sign up to get started'}</Text>
 
                 <View style={styles.errorMessage}>
                     {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
@@ -24,11 +36,11 @@ class RegisterScreen extends React.Component{
                     <Text style={styles.inputTxt}>Full name</Text>
                     <TextInput style={styles.txtInput} 
                     autoCapitalize="none"
-                    onChangeText={ email => this.setState({ name })}
+                    onChangeText={ name => this.setState({ name })}
                     value={this.state.name}
                     >
                     </TextInput>
-                </View>
+                </View>             
 
                 <View style={styles.form}>
                     <Text style={styles.inputTxt}>Email adress</Text>
@@ -57,7 +69,7 @@ class RegisterScreen extends React.Component{
 
                 <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }} onPress={() => this.props.navigation.navigate("Login")}>
                     <Text style={{ color:"#414959", fontSize: 13 }}>
-                        New here?<Text style={{ color:"#E9446A", fontWeight:"500" }}>Login</Text>
+                        Already have an account?<Text style={{ color:"#E9446A", fontWeight:"500" }}>Sign in</Text>
                     </Text>
                 </TouchableOpacity>
 
