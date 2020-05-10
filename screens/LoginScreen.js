@@ -27,20 +27,20 @@ class LoginScreen extends React.Component{
                 <View style={styles.form}>
                     <Text style={styles.inputTxt}>Email adress</Text>
                     <TextInput style={styles.txtInput} 
-                    autoCapitalize="none"
-                    onChangeText={ email => this.setState({ email })}
-                    value={this.state.email}
+                        autoCapitalize="none"
+                        onChangeText={ email => this.setState({ email })}
+                        value={this.state.email}
                     >
                     </TextInput>
                 </View>
 
                 <View style={styles.form}>
                     <Text style={styles.inputTxt}>Password</Text>
-                    <TextInput style={styles.txtInput} 
-                    autoCapitalize="none" 
-                    secureTextEntry={true}
-                    onChangeText={ password => this.setState({ password })}
-                    value={this.state.password}
+                    <TextInput style={styles.txtInput}
+                        autoCapitalize="none" 
+                        secureTextEntry={true}
+                        onChangeText={ password => this.setState({ password })}
+                        value={this.state.password}
                     >
                     </TextInput>
                 </View>
