@@ -23,7 +23,7 @@ class HomeScreen extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <Text>What'a gwan {this.state.email}</Text>
+                <Text style={{fontSize: 15}}>What'a gwan {this.state.email}</Text>
 
                 <TouchableOpacity style={{marginTop: 32}} onPress={this.signOutUser}>
                     <Text>Sign out</Text>
