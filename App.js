@@ -25,8 +25,8 @@ var firebaseConfig = {
  })
 
  const AuthStack = createStackNavigator({
-     Login: LoginScreen,
-     Register: RegisterScreen
+    Login: LoginScreen,
+    Register: RegisterScreen
  })
 
  export default createAppContainer(
