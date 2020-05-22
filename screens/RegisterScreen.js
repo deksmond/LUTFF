@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, StatusBar } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import * as firebase from 'firebase'
 
 class RegisterScreen extends React.Component{
+   
     state = {
         name: "",
         email: "",
@@ -26,7 +28,12 @@ handleSignUp = () => {
     render(){
         return(
             <View style={styles.container}>
+
                 <Text style={styles.greeting}>{'Hello! \n Sign up to get started'}</Text>
+
+                <TouchableOpacity style={styles.avatar}>
+                    <Ionicons name="ios-add" size={40} color="#FFF" style={{marginTop: 6, marginLeft: 2}}></Ionicons>
+                </TouchableOpacity>
 
                 <View style={styles.errorMessage}>
                     {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
@@ -91,7 +98,7 @@ const styles = StyleSheet.create({
         fontWeight: "400"
     },
     errorMessage: {
-        height: 72,
+        height: 50,
         textAlign: "center",
         marginHorizontal: 30, 
         alignItems: "center",
@@ -105,7 +112,7 @@ const styles = StyleSheet.create({
     },
     form: {
        marginHorizontal: 30,
-       marginBottom: 48,
+       marginBottom: 30,
     },
     inputTxt: {
         color: '#8A8F9E',
@@ -127,5 +134,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-
+    avatar: {
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+        backgroundColor: "#000000",
+        marginTop: 20,
+        marginHorizontal: 150,
+        alignItems: "center",
+        justifyContent: "center"
+    }
 }); 
